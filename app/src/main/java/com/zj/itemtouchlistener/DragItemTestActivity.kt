@@ -21,12 +21,14 @@ import androidx.activity.OnBackPressedCallback
  */
 class DragItemTestActivity : ComponentActivity() {
     lateinit var view: View
+    lateinit var targetView: View
     val tag = "DragItemTestActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_drag)
 
         view = findViewById(R.id.view)
+        targetView = findViewById(R.id.target)
 
 
         view.setOnLongClickListener {
@@ -64,14 +66,14 @@ class DragItemTestActivity : ComponentActivity() {
 
             view.startDragAndDrop(dragData, shadowBuilder2, null, flags)
             //view.visibility = View.GONE
-            onBackPressedDispatcher.onBackPressed()
+            //onBackPressedDispatcher.onBackPressed()
             true
         }
 
 
 
 
-        view.setOnDragListener(object : View.OnDragListener {
+        targetView.setOnDragListener(object : View.OnDragListener {
             override fun onDrag(v: View, event: DragEvent?): Boolean {
                 return when (event?.action) {
                     DragEvent.ACTION_DRAG_STARTED -> {
@@ -81,7 +83,8 @@ class DragItemTestActivity : ComponentActivity() {
                             //v.setBackgroundColor(Color.LTGRAY)  // 改变背景色表示可以接收
                             true  // 返回true表示接收拖动事件
                         } else {
-                            false  // 不支持的MIME类型
+                            //false  // 不支持的MIME类型
+                            true
                         }
                     }
                     DragEvent.ACTION_DRAG_LOCATION -> {
@@ -123,7 +126,7 @@ class DragItemTestActivity : ComponentActivity() {
                         true
                     }
 
-                    else -> false
+                    else -> true
                 }
             }
 

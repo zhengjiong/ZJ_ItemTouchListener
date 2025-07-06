@@ -27,6 +27,12 @@
             android:name=".DragItemTestActivity"
             android:exported="true"
             android:theme="@style/Theme.ZJ_ItemTouchListener">
+        </activity>
+
+        <activity
+            android:name=".SystemDragDemoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ZJ_ItemTouchListener">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

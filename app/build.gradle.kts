@@ -39,6 +39,10 @@ android {
     buildFeatures {
         compose = true
     }
+
+    buildFeatures {
+        viewBinding = true  // 更现代的写法，兼容性更好
+    }
 }
 
 dependencies {
